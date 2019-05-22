@@ -14,7 +14,7 @@ resource "azurerm_storage_container" "trail" {
 }
 
 resource "azurerm_storage_blob" "web" {
-  name                   = "sample.vhd"
+  name                   = "sample_web.vhd"
   resource_group_name    = "${azurerm_resource_group.trail.name}"
   storage_account_name   = "${azurerm_storage_account.trail.name}"
   storage_container_name = "${azurerm_storage_container.trail.name}"
@@ -23,7 +23,7 @@ resource "azurerm_storage_blob" "web" {
 }
 
 resource "azurerm_storage_blob" "business" {
-  name                   = "sample.vhd"
+  name                   = "sample_business.vhd"
   resource_group_name    = "${azurerm_resource_group.trail.name}"
   storage_account_name   = "${azurerm_storage_account.trail.name}"
   storage_container_name = "${azurerm_storage_container.trail.name}"
@@ -32,7 +32,7 @@ resource "azurerm_storage_blob" "business" {
 }
 
 resource "azurerm_storage_blob" "db" {
-  name                   = "sample.vhd"
+  name                   = "sample_db.vhd"
   resource_group_name    = "${azurerm_resource_group.trail.name}"
   storage_account_name   = "${azurerm_storage_account.trail.name}"
   storage_container_name = "${azurerm_storage_container.trail.name}"
