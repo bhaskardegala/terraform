@@ -9,7 +9,7 @@ resource "azurerm_virtual_machine" "web" {
     name          = "vm-osdisk-1"
     caching       = "ReadWrite"
     create_option = "FromImage"
-    vhd_uri       = "https://${var.first}sa12345.blob.core.windows.net/vhds/web-osdisk.vhd"
+    vhd_uri       = "https://${azurerm_storage_account.trail.name}.blob.core.windows.net/vhds/web-osdisk.vhd"
   }
 
   storage_image_reference {
@@ -43,7 +43,7 @@ resource "azurerm_virtual_machine" "business" {
     name          = "vm-osdisk-2"
     caching       = "ReadWrite"
     create_option = "FromImage"
-    vhd_uri       = "https://${var.first}sa12345.blob.core.windows.net/vhds/business-osdisk.vhd"
+    vhd_uri       = "https://${azurerm_storage_account.trail.name}.blob.core.windows.net/vhds/business-osdisk.vhd"
   }
 
   storage_image_reference {
@@ -77,7 +77,7 @@ resource "azurerm_virtual_machine" "db" {
     name          = "vm-osdisk-3"
     caching       = "ReadWrite"
     create_option = "FromImage"
-    vhd_uri       = "https://${var.first}sa12345.blob.core.windows.net/vhds/db-osdisk.vhd"
+    vhd_uri       = "https://${azurerm_storage_account.trail.name}.blob.core.windows.net/vhds/db-osdisk.vhd"
   }
 
   storage_image_reference {
