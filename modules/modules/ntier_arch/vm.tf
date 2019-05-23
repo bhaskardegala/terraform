@@ -10,6 +10,7 @@ resource "azurerm_virtual_machine" "web" {
     caching       = "ReadWrite"
     create_option = "FromImage"
     vhd_uri       = "https://learningbhaskar123.blob.core.windows.net/vhds/web-osdisk.vhd"
+    disk_size_gb  = "30"
   }
 
   storage_image_reference {

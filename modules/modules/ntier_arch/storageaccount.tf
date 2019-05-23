@@ -1,7 +1,7 @@
 resource "azurerm_storage_account" "trail" {
   account_tier             = "Standard"
   location                 = "${azurerm_resource_group.trail.location}"
-  name                     = "learningbhaskar123"
+  name                     = "${var.first}-SA"
   resource_group_name      = "${azurerm_resource_group.trail.name}"
   account_replication_type = "LRS"
 }
