@@ -5,7 +5,7 @@ resource "azurerm_subnet" "web" {
   virtual_network_name = "${azurerm_virtual_network.trail.name}"
 }
 
-resource "azurerm_subnet" "business" {
+resource "azurerm_subnet" "backend" {
   name                 = "${var.first}-sub2"
   address_prefix       = "10.0.2.0/24"
   resource_group_name  = "${azurerm_resource_group.trail.name}"

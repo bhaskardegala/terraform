@@ -4,7 +4,7 @@ resource "azurerm_network_security_group" "web" {
   resource_group_name = "${azurerm_resource_group.trail.name}"
 }
 
-resource "azurerm_network_security_group" "business" {
+resource "azurerm_network_security_group" "backend" {
   name                = "${var.first}-nsg2"
   location            = "${azurerm_resource_group.trail.location}"
   resource_group_name = "${azurerm_resource_group.trail.name}"
@@ -58,7 +58,7 @@ resource "azurerm_network_security_rule" "web_in" {
   network_security_group_name = "${azurerm_network_security_group.web.name}"
 }
 
-resource "azurerm_network_security_rule" "business_out1" {
+resource "azurerm_network_security_rule" "backend_out1" {
   name                        = "${var.first}-rule1"
   direction                   = "outbound"
   priority                    = "1000"
@@ -69,10 +69,10 @@ resource "azurerm_network_security_rule" "business_out1" {
   source_port_range           = "*"
   destination_port_range      = "*"
   resource_group_name         = "${azurerm_resource_group.trail.name}"
-  network_security_group_name = "${azurerm_network_security_group.business.name}"
+  network_security_group_name = "${azurerm_network_security_group.backend.name}"
 }
 
-resource "azurerm_network_security_rule" "business_out2" {
+resource "azurerm_network_security_rule" "backend_out2" {
   name                        = "${var.first}-rule2"
   direction                   = "outbound"
   priority                    = "2000"
@@ -83,10 +83,10 @@ resource "azurerm_network_security_rule" "business_out2" {
   source_port_range           = "*"
   destination_port_range      = "*"
   resource_group_name         = "${azurerm_resource_group.trail.name}"
-  network_security_group_name = "${azurerm_network_security_group.business.name}"
+  network_security_group_name = "${azurerm_network_security_group.backend.name}"
 }
 
-resource "azurerm_network_security_rule" "business_in1" {
+resource "azurerm_network_security_rule" "backend_in1" {
   name                        = "${var.first}-rule3"
   direction                   = "inbound"
   priority                    = "1000"
@@ -97,10 +97,10 @@ resource "azurerm_network_security_rule" "business_in1" {
   source_port_range           = "*"
   destination_port_range      = "*"
   resource_group_name         = "${azurerm_resource_group.trail.name}"
-  network_security_group_name = "${azurerm_network_security_group.business.name}"
+  network_security_group_name = "${azurerm_network_security_group.backend.name}"
 }
 
-resource "azurerm_network_security_rule" "business_in2" {
+resource "azurerm_network_security_rule" "backend_in2" {
   name                        = "${var.first}-rule4"
   direction                   = "inbound"
   priority                    = "2000"
@@ -111,7 +111,7 @@ resource "azurerm_network_security_rule" "business_in2" {
   source_port_range           = "*"
   destination_port_range      = "*"
   resource_group_name         = "${azurerm_resource_group.trail.name}"
-  network_security_group_name = "${azurerm_network_security_group.business.name}"
+  network_security_group_name = "${azurerm_network_security_group.backend.name}"
 }
 
 resource "azurerm_network_security_rule" "db_out1" {
@@ -139,7 +139,7 @@ resource "azurerm_network_security_rule" "db_in1" {
   source_port_range           = "*"
   destination_port_range      = "*"
   resource_group_name         = "${azurerm_resource_group.trail.name}"
-  network_security_group_name = "${azurerm_network_security_group.db.name}"
+  network_security_group_name = "${azurerm_network_security_group.db.name}" 
 }
 
 resource "azurerm_network_security_rule" "db_in2" {

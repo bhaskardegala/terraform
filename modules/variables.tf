@@ -33,14 +33,14 @@ variable "password_web_vm" {
   description = "please enter your password which is used as login creadential for web_vm"
 }
 
-variable "username_business_vm" {
+variable "username_backend_vm" {
   type        = "string"
-  description = "please enter your user name which is used as login creadential for business_vm"
+  description = "please enter your user name which is used as login creadential for backend_vm"
 }
 
-variable "password_business_vm" {
+variable "password_backend_vm" {
   type        = "string"
-  description = "please enter your password which is used as login creadential for business_vm"
+  description = "please enter your password which is used as login creadential for backend_vm"
 }
 
 variable "username_db_vm" {

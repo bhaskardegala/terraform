@@ -12,14 +12,14 @@ resource "azurerm_network_interface" "web" {
   }
 }
 
-resource "azurerm_network_interface" "business" {
+resource "azurerm_network_interface" "backend" {
   name                      = "${var.first}-ani2"
   location                  = "${azurerm_resource_group.trail.location}"
   resource_group_name       = "${azurerm_resource_group.trail.name}"
-  network_security_group_id = "${azurerm_network_security_group.business.id}"
+  network_security_group_id = "${azurerm_network_security_group.backend.id}"
 
   ip_configuration {
-    subnet_id                     = "${azurerm_subnet.business.id}"
+    subnet_id                     = "${azurerm_subnet.backend.id}"
     name                          = "testingip2"
     private_ip_address_allocation = "Dynamic"
   }

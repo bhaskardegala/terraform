@@ -30,11 +30,11 @@ variable "password_web_vm" {
   type    = "string"
 }
 
-variable "username_business_vm" {
+variable "username_backend_vm" {
   type    = "string"
 }
 
-variable "password_business_vm" {
+variable "password_backend_vm" {
   type    = "string"
 }
 

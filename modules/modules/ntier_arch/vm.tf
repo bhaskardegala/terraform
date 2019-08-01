@@ -2,7 +2,7 @@ resource "azurerm_virtual_machine" "web" {
   name                  = "${var.first}-vm"
   resource_group_name   = "${azurerm_resource_group.trail.name}"
   location              = "${azurerm_resource_group.trail.location}"
-  vm_size               = "Standard_B1s"
+  vm_size               = "Standard_F8s"
   network_interface_ids = ["${azurerm_network_interface.web.id}"]
 
   storage_os_disk {
@@ -15,7 +15,7 @@ resource "azurerm_virtual_machine" "web" {
   storage_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"
-    sku       = "16.04-LTS"
+    sku       = "18.04-LTS"
     version   = "latest"
   }
 
@@ -32,33 +32,33 @@ resource "azurerm_virtual_machine" "web" {
   }
 }
 
-resource "azurerm_virtual_machine" "business" {
+resource "azurerm_virtual_machine" "backend" {
   name                  = "${var.first}-vm2"
   resource_group_name   = "${azurerm_resource_group.trail.name}"
   location              = "${azurerm_resource_group.trail.location}"
-  vm_size               = "Standard_B1s"
-  network_interface_ids = ["${azurerm_network_interface.business.id}"]
+  vm_size               = "Standard_E8s_v3"
+  network_interface_ids = ["${azurerm_network_interface.backend.id}"]
 
   storage_os_disk {
     name          = "vm-osdisk-2"
     caching       = "ReadWrite"
     create_option = "FromImage"
-    vhd_uri       = "https://${azurerm_storage_account.trail.name}.blob.core.windows.net/vhds/business-osdisk.vhd"
+    vhd_uri       = "https://${azurerm_storage_account.trail.name}.blob.core.windows.net/vhds/backend-osdisk.vhd"
   }
 
   storage_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"
-    sku       = "16.04-LTS"
+    sku       = "18.04-LTS"
     version   = "latest"
   }
 
   delete_os_disk_on_termination = true
 
   os_profile {
-    computer_name  = "business"
-    admin_username = "${var.username_business_vm}"
-    admin_password = "${var.password_business_vm}"
+    computer_name  = "backend"
+    admin_username = "${var.username_backend_vm}"
+    admin_password = "${var.password_backend_vm}"
   }
 
   os_profile_linux_config {
@@ -70,7 +70,7 @@ resource "azurerm_virtual_machine" "db" {
   name                  = "${var.first}-vm3"
   resource_group_name   = "${azurerm_resource_group.trail.name}"
   location              = "${azurerm_resource_group.trail.location}"
-  vm_size               = "Standard_B1s"
+  vm_size               = "Standard_Lsv2"
   network_interface_ids = ["${azurerm_network_interface.db.id}"]
 
   storage_os_disk {
@@ -83,7 +83,7 @@ resource "azurerm_virtual_machine" "db" {
   storage_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"
-    sku       = "16.04-LTS"
+    sku       = "18.04-LTS"
     version   = "latest"
   }
 
